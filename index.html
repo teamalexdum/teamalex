@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Alex - ملخصات دراسية</title>
+    <style>
+        /* أنماط التصميم المخصصة */
+        .team-logo {
+            position: absolute;
+            top: 15px;
+            left: 55px;
+            width: 60px;
+            height: 60px;
+            z-index: 2;
+        }
+
+        .team-logo img {
+            width: 200%;
+            height: 200%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .team-logo:hover img {
+            transform: scale(2.5);
+        }
+
+        @media (max-width: 768px) {
+            .team-logo {
+                width: 45px;
+                height: 45px;
+                top: 10px;
+                left: 10px;
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f8ff;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #1a73e8, #0d47a1);
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .team-name {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+
+        .subject-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .subject-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(28, 115, 232, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+            border: 2px solid transparent;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-5px);
+            border-color: #1a73e8;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background-color: #1a73e8;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            margin-top: 15px;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .download-btn:hover {
+            background-color: #1557b0;
+            box-shadow: 0 3px 6px rgba(21, 87, 176, 0.3);
+        }
+
+        .badge {
+            background-color: #e3f2fd;
+            color: #1a73e8;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            display: inline-block;
+            margin: 5px 0;
+        }
+
+        @media (max-width: 768px) {
+            .subject-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header {
+                padding: 30px 15px;
+            }
+        }
+
+        .telegram-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #0088cc;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .tg-icon {
+            font-size: 1.2em;
+        }
+
+        .telegram-btn:hover {
+            background: #0077b3;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .telegram-btn {
+                bottom: 10px;
+                left: 10px;
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="team-name">Team Alex</div>
+        <h1>Lectures</h1>
+        <p>PDFs</p>
+        <!-- إضافة الوغو هنا -->
+        <div class="team-logo">
+            <img src="C:\Users\jonyy\Downloads\Aesthetic Minimalist Elegant Signature Logo.png" alt="Team Alex Logo">
+        </div>
+        <!-- بقية المحتوى -->
+    </header>
+
+
+    <div class="subject-grid">
+        <!-- ملخص 1 -->
+        <div class="subject-card">
+            <div class="badge">2026/2024</div>
+            <h3>Political Science</h3>
+            <p>Prepared By:Team Alex</p>
+            <a href="math.pdf" class="download-btn" download>lec </a>
+        </div>
+
+        <!-- ملخص 2 -->
+        <div class="subject-card">
+            <div class="badge">2026/2024</div>
+            <h3>Marketing</h3>
+            <p>Prepared By:Team Alex</p>
+            <a href="physics.pdf" class="download-btn" download>lec </a>
+        </div>
+
+        <!-- ملخص 3 -->
+        <div class="subject-card">
+            <div class="badge">2026/2024</div>
+            <h3>AIS</h3>
+            <p>Prepared By:Team Alex</p>
+            <a href="physics.pdf" class="download-btn" download>lec </a>
+        </div>
+
+        <!-- يمكنك إضافة 6 بطاقات أخرى هنا بنفس النمط -->
+
+        <a href="https://t.me/teamalexgui" class="telegram-btn" target="_blank">
+            <span class="tg-icon">❕</span>
+            شكوى و مقترحات و تعليق
+        </a>
+    </div>
+</body>
+
+</html>
