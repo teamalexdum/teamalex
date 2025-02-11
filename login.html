@@ -170,12 +170,12 @@
             const password = document.querySelector('input[type="password"]').value;
 
             // بيانات الدخول (يمكن تعديلها)
-            const validCredentials = {
+            const validCredentials1 = {
                 username: "kamal",
                 password: "k2024l"
             }
 
-            if(username === validCredentials.username && password === validCredentials.password) {
+            if(username === validCredentials1.username && password === validCredentials1.password) {
                 localStorage.setItem('teamAlexAuth', 'true');
                 window.location.href = 'index.html';
             } else {
