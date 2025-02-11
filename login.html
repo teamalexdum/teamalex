@@ -1,44 +1,114 @@
-<!-- صفحة تسجيل الدخول (login.html) -->
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تسجيل الدخول - Team Alex</title>
+    <title>Team Alex - تسجيل الدخول</title>
     <style>
-        /* أنماط تسجيل الدخول */
+        /* أنماط موحدة لثيم Team Alex */
+        * {
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background: linear-gradient(135deg, #f0f8ff, #e3f2fd);
+            min-height: 100vh;
+        }
+
         .login-container {
             max-width: 400px;
             margin: 100px auto;
-            padding: 30px;
+            padding: 40px 30px;
             background: white;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(28, 115, 232, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(28, 115, 232, 0.15);
+            position: relative;
+            border: 2px solid #1a73e8;
+        }
+
+        .team-logo {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            padding: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
         .login-form input {
             width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            padding: 12px 20px;
+            margin: 15px 0;
+            border: 2px solid #1a73e8;
+            border-radius: 25px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .login-form input:focus {
+            outline: none;
+            box-shadow: 0 0 8px rgba(28, 115, 232, 0.3);
         }
 
         .login-btn {
-            background: #1a73e8;
+            background: linear-gradient(135deg, #1a73e8, #0d47a1);
             color: white;
-            padding: 12px 25px;
+            padding: 12px 30px;
             border: none;
-            border-radius: 5px;
+            border-radius: 25px;
             cursor: pointer;
             width: 100%;
-            margin-top: 15px;
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(28, 115, 232, 0.4);
+        }
+
+        .telegram-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: #0088cc;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+
+        @media (max-width: 768px) {
+            .login-container {
+                margin: 80px 15px;
+                padding: 30px 20px;
+            }
+            
+            .team-logo {
+                width: 60px;
+                height: 60px;
+                top: -25px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="login-container">
-        <h2>تسجيل الدخول</h2>
+        <img src="logo.png" class="team-logo" alt="Team Alex Logo">
+        <h2 style="text-align: center; color: #1a73e8; margin-bottom: 30px;">مرحبا بكم في Team Alex</h2>
         <form class="login-form" id="loginForm">
             <input type="text" placeholder="اسم المستخدم" required>
             <input type="password" placeholder="كلمة المرور" required>
@@ -46,28 +116,41 @@
         </form>
     </div>
 
+    <a href="https://t.me/team_alex" class="telegram-btn" target="_blank">
+        <span style="font-size: 1.4em;">✈️</span>
+        انضم لقناتنا
+    </a>
+
     <script>
-        // التحقق من بيانات الدخول
+        // نظام تسجيل الدخول
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
             const username = document.querySelector('input[type="text"]').value;
             const password = document.querySelector('input[type="password"]').value;
 
-            // بيانات الدخول الصحيحة (يمكن تعديلها)1
-            const validUsername = "joe";
-            const validPassword = "5752";
+            // بيانات الدخول (يمكن تعديلها)
+            const validCredentials = {
+                username: "team_alex",
+                password: "alex2024"
+            }
 
-             // بيانات الدخول الصحيحة (يمكن تعديلها)2
-            const validUsername = "kamal";
-            const validPassword = "e8D(TZ";
-
-            if(username === validUsername && password === validPassword) {
-                localStorage.setItem('isLoggedIn', 'true');
+            if(username === validCredentials.username && password === validCredentials.password) {
+                localStorage.setItem('teamAlexAuth', 'true');
                 window.location.href = 'index.html';
             } else {
-                alert('بيانات الدخول غير صحيحة!');
+                alert('⚠️ بيانات الدخول غير صحيحة!');
             }
+        });
+
+        // إضافة تأثيرات للوغو
+        const logo = document.querySelector('.team-logo');
+        logo.addEventListener('mouseover', () => {
+            logo.style.transform = `translateX(-50%) scale(1.1)`;
+        });
+        
+        logo.addEventListener('mouseout', () => {
+            logo.style.transform = `translateX(-50%) scale(1)`;
         });
     </script>
 </body>
