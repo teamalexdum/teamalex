@@ -209,6 +209,31 @@
             شكوى و مقترحات و تعليق
         </a>
     </div>
+    <!-- إضافة هذا الكود في صفحة index.html -->
+<!-- قبل نهاية body -->
+<script>
+    // التحقق من حالة تسجيل الدخول
+    window.onload = function() {
+        const isLoggedIn = localStorage.getItem('isLoggedIn');
+        
+        if(!isLoggedIn || isLoggedIn !== 'true') {
+            window.location.href = 'login.html';
+        }
+    }
+
+    // إضافة زر الخروج
+    const logoutBtn = document.createElement('button');
+    logoutBtn.textContent = 'خروج';
+    logoutBtn.style.position = 'fixed';
+    logoutBtn.style.bottom = '20px';
+    logoutBtn.style.right = '20px';
+    logoutBtn.style.background = '#ff4444';
+    logoutBtn.onclick = () => {
+        localStorage.removeItem('isLoggedIn');
+        window.location.href = 'login.html';
+    }
+    document.body.appendChild(logoutBtn);
+</script>
 </body>
 
 </html>
