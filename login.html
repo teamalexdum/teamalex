@@ -1,0 +1,70 @@
+<!-- صفحة تسجيل الدخول (login.html) -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - Team Alex</title>
+    <style>
+        /* أنماط تسجيل الدخول */
+        .login-container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(28, 115, 232, 0.1);
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .login-btn {
+            background: #1a73e8;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>تسجيل الدخول</h2>
+        <form class="login-form" id="loginForm">
+            <input type="text" placeholder="اسم المستخدم" required>
+            <input type="password" placeholder="كلمة المرور" required>
+            <button type="submit" class="login-btn">دخول</button>
+        </form>
+    </div>
+
+    <script>
+        // التحقق من بيانات الدخول
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.querySelector('input[type="text"]').value;
+            const password = document.querySelector('input[type="password"]').value;
+
+            // بيانات الدخول الصحيحة (يمكن تعديلها)
+            const validUsername = "user";
+            const validPassword = "1234";
+
+            if(username === validUsername && password === validPassword) {
+                localStorage.setItem('isLoggedIn', 'true');
+                window.location.href = 'index.html';
+            } else {
+                alert('بيانات الدخول غير صحيحة!');
+            }
+        });
+    </script>
+</body>
+</html>
