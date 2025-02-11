@@ -161,37 +161,5 @@
             logo.style.transform = `translateX(-50%) scale(1)`;
         });
     </script>
-     <script>
-        // نظام تسجيل الدخول
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const username = document.querySelector('input[type="text"]').value;
-            const password = document.querySelector('input[type="password"]').value;
-
-            // بيانات الدخول (يمكن تعديلها)
-            const validCredentials1 = {
-                username: "kamal",
-                password: "k2024l"
-            }
-
-            if(username === validCredentials1.username && password === validCredentials1.password) {
-                localStorage.setItem('teamAlexAuth', 'true');
-                window.location.href = 'index.html';
-            } else {
-                alert('⚠️ بيانات الدخول غير صحيحة!');
-            }
-        });
-
-        // إضافة تأثيرات للوغو
-        const logo = document.querySelector('.team-logo');
-        logo.addEventListener('mouseover', () => {
-            logo.style.transform = `translateX(-50%) scale(1.1)`;
-        });
-        
-        logo.addEventListener('mouseout', () => {
-            logo.style.transform = `translateX(-50%) scale(1)`;
-        });
-    </script>
 </body>
 </html>
