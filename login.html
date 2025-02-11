@@ -77,44 +77,37 @@
 
         .telegram-btn {
             position: fixed;
-            bottom: 20px;
-            left: 20px;
+            bottom: 30px;
+            left: 30px;
             background: #0088cc;
             color: white;
-            padding: 12px 25px;
+            padding: 12px 30px;
             border-radius: 30px;
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .tg-icon {
-            font-size: 1.2em;
-        }
-
-        .telegram-btn:hover {
-            background: #0077b3;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
         }
 
         @media (max-width: 768px) {
-            .telegram-btn {
-                bottom: 10px;
-                left: 10px;
-                padding: 10px 20px;
-                font-size: 0.9em;
+            .login-container {
+                margin: 80px 15px;
+                padding: 30px 20px;
+            }
+            
+            .team-logo {
+                width: 60px;
+                height: 60px;
+                top: -25px;
             }
         }
     </style>
 </head>
 <body>
     <div class="login-container">
-        <img src="Aesthetic Minimalist Elegant Signature Logo.png" class="team-logo" alt="Team Alex Logo">
+        <img src="logo.png" class="team-logo" alt="Team Alex Logo">
         <h2 style="text-align: center; color: #1a73e8; margin-bottom: 30px;">مرحبا بكم في Team Alex</h2>
         <form class="login-form" id="loginForm">
             <input type="text" placeholder="اسم المستخدم" required>
@@ -123,11 +116,10 @@
         </form>
     </div>
 
- <a href="https://t.me/teamalexgui" class="telegram-btn" target="_blank">
-            <span class="tg-icon">❕</span>
-            شكوى و مقترحات و تعليق
-        </a>
-    </div>
+    <a href="https://t.me/team_alex" class="telegram-btn" target="_blank">
+        <span style="font-size: 1.4em;">✈️</span>
+        انضم لقناتنا
+    </a>
 
     <script>
         // نظام تسجيل الدخول
