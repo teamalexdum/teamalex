@@ -77,30 +77,37 @@
 
         .telegram-btn {
             position: fixed;
-            bottom: 30px;
-            left: 30px;
+            bottom: 20px;
+            left: 20px;
             background: #0088cc;
             color: white;
-            padding: 12px 30px;
+            padding: 12px 25px;
             border-radius: 30px;
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
             z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .tg-icon {
+            font-size: 1.2em;
+        }
+
+        .telegram-btn:hover {
+            background: #0077b3;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
         }
 
         @media (max-width: 768px) {
-            .login-container {
-                margin: 80px 15px;
-                padding: 30px 20px;
-            }
-            
-            .team-logo {
-                width: 60px;
-                height: 60px;
-                top: -25px;
+            .telegram-btn {
+                bottom: 10px;
+                left: 10px;
+                padding: 10px 20px;
+                font-size: 0.9em;
             }
         }
     </style>
