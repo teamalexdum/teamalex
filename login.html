@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Team Alex</title>
     <style>
-        /* General Styles */
         body {
             font-family: "Poppins", sans-serif;
             background: linear-gradient(135deg, #1a73e8, #0d47a1);
@@ -82,7 +81,6 @@
             display: none;
         }
 
-        /* Logo */
         .logo {
             width: 120px;
             margin-bottom: 15px;
@@ -115,78 +113,86 @@
     </div>
 
     <script>
-           const users = [
-        { username: "admin", password: "you/1234/ty" },
-        { username: "youss/a", password: "12345" },
-        { username: "kamal", password: "12345" }
-    ];
+        const users = [
+            { username: "admin", password: "you/1234/ty" },
+            { username: "youss/a", password: "12345" },
+            { username: "kamal", password: "12345" }
+        ];
 
-    let logoutTimer;
+        let logoutTimer;
+        let failedAttempts = 0;
+        const maxAttempts = 5; 
 
-    document.getElementById("login-form").addEventListener("submit", function (event) {
-        event.preventDefault();
+        document.getElementById("login-form").addEventListener("submit", function (event) {
+            event.preventDefault();
 
-        let username = document.getElementById("username").value.trim();
-        let password = document.getElementById("password").value.trim();
-
-        let user = users.find(u => u.username === username && u.password === password);
-
-        if (user) {
-            // Check if the user is already logged in on another device
-            if (localStorage.getItem(`loggedIn_${username}`) === "true") {
-                alert("This account is already logged in on another device.");
+            if (failedAttempts >= maxAttempts) {
+                alert("Too many failed attempts. Please try again later.");
                 return;
             }
 
-            // Store login session
-            localStorage.setItem("teamAlexAuth", "true");
-            localStorage.setItem("currentUser", username);
-            localStorage.setItem(`loggedIn_${username}`, "true"); // Prevent multi-login
-            sessionStorage.setItem("activeSession", "true"); // Prevent multiple tabs
+            let username = document.getElementById("username").value.trim();
+            let password = document.getElementById("password").value.trim();
 
-            alert("You have successfully logged in!");
-            document.body.innerHTML = `<h2>Welcome, ${username}!</h2>
-                                       <p id="timer" class="timer"></p>
-                                       <button onclick="logout()">Logout</button>`;
+            let user = users.find(u => u.username === username && u.password === password);
 
-            startLogoutTimer();
-        } else {
-            alert("Incorrect username or password.");
-        }
-    });
+            if (user) {
+                if (localStorage.getItem(`loggedIn_${username}`) === "true") {
+                    alert("This account is already logged in on another device.");
+                    return;
+                }
 
-    function startLogoutTimer() {
-        let timeLeft = 120; // 2 minutes
-        document.getElementById("timer").style.display = "block";
+                localStorage.setItem("teamAlexAuth", "true");
+                localStorage.setItem("currentUser", username);
+                localStorage.setItem(`loggedIn_${username}`, "true");
+                sessionStorage.setItem("activeSession", "true");
 
-        logoutTimer = setInterval(() => {
-            timeLeft--;
-            document.getElementById("timer").innerText = `Session expires in: ${timeLeft} seconds`;
+                alert("You have successfully logged in!");
+                document.body.innerHTML = `<h2>Welcome, ${username}!</h2>
+                                           <p id="timer" class="timer"></p>
+                                           <button onclick="logout()">Logout</button>`;
 
-            if (timeLeft <= 0) {
-                logout();
+                startLogoutTimer();
+            } else {
+                failedAttempts++;
+                alert(`Incorrect username or password. Attempts left: ${maxAttempts - failedAttempts}`);
             }
-        }, 1000);
-    }
+        });
 
-    function logout() {
-        alert("Session expired. Logging out.");
-        clearInterval(logoutTimer);
-        let username = localStorage.getItem("currentUser");
+        function startLogoutTimer() {
+            let timeLeft = 120;
+            document.getElementById("timer").style.display = "block";
 
-        localStorage.removeItem("teamAlexAuth");
-        localStorage.removeItem("currentUser");
-        localStorage.removeItem(`loggedIn_${username}`);
-        sessionStorage.removeItem("activeSession");
+            logoutTimer = setInterval(() => {
+                timeLeft--;
+                let timerElement = document.getElementById("timer");
+                if (timerElement) {
+                    timerElement.textContent = `Session expires in: ${timeLeft} seconds`;
+                }
 
-        window.location.href = "index.html";
-    }
+                if (timeLeft <= 0) {
+                    logout();
+                }
+            }, 1000);
+        }
 
-    // Prevent duplicate login in same browser tab
-    if (sessionStorage.getItem("activeSession")) {
-        alert("You are already logged in on this browser.");
-        window.location.href = "login.html";
-    }
+        function logout() {
+            alert("Session expired. Logging out.");
+            clearInterval(logoutTimer);
+            let username = localStorage.getItem("currentUser");
+
+            localStorage.removeItem("teamAlexAuth");
+            localStorage.removeItem("currentUser");
+            localStorage.removeItem(`loggedIn_${username}`);
+            sessionStorage.removeItem("activeSession");
+
+            window.location.href = "index.html";
+        }
+
+        if (sessionStorage.getItem("activeSession")) {
+            alert("You are already logged in on this browser.");
+            window.location.href = "login.html";
+        }
     </script>
 </body>
 
