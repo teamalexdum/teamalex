@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تسجيل الدخول - Team Alex</title>
+    <title>Login - Team Alex</title>
     <style>
         /* تصميم صفحة تسجيل الدخول */
         body {
@@ -114,15 +114,15 @@
 <body>
     <div class="login-container">
          <img src="Aesthetic Minimalist Elegant Signature Logo.png" alt="شعار Team Alex" class="logo">
-        <h2>تسجيل الدخول إلى Team Alex</h2>
+        <h2>Login Team Alex</h2>
         <form id="login-form">
-            <label for="username">اسم المستخدم:</label>
+            <label for="username">user name:</label>
             <input type="text" id="username" required>
 
-            <label for="password">كلمة المرور:</label>
+            <label for="password">password:</label>
             <input type="password" id="password" required>
 
-            <button type="submit">تسجيل الدخول</button>
+            <button type="submit">Login</button>
         </form>
        
     </div>
@@ -135,7 +135,7 @@
         const users = [
             { username: "admin", password: "you/1234/ty" },
             { username: "youss/a", password: "12345" },
-             { username: "kamal", password: "12345" }
+            { username: "kamal", password: "12345" }
                                            
         ];
 
@@ -151,10 +151,10 @@
             if (user) {
                 localStorage.setItem("teamAlexAuth", "true");
                 localStorage.setItem("currentUser", username);
-                alert("تم تسجيل الدخول بنجاح!");
+                alert("You have successfully logged in!");
                 window.location.href = "index.html"; // إعادة التوجيه للصفحة الرئيسية
             } else {
-                alert("اسم المستخدم أو كلمة المرور غير صحيحة.");
+                alert("Incorrect username or password.");
             }
         });
 
@@ -162,7 +162,7 @@
         document.addEventListener("DOMContentLoaded", function () {
             if (localStorage.getItem("teamAlexAuth") === "true") {
                 let currentUser = localStorage.getItem("currentUser");
-                document.body.innerHTML = `<h2>مرحبًا، ${currentUser}!</h2>
+                document.body.innerHTML = `<h2>Welcome، ${currentUser}!</h2>
                                            <button onclick="logout()">تسجيل الخروج</button>`;
             }
         });
