@@ -1,268 +1,203 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team Alex - PDF</title>
     <style>
-        /* أنماط مخصصة متطورة */
         :root {
             --main-blue: #1a73e8;
             --dark-blue: #0d47a1;
             --accent-color: #e3f2fd;
+            --background-gradient: linear-gradient(135deg, #f8fbff, #e6f0ff);
         }
 
         * {
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            margin: 0;
+            background: var(--background-gradient);
             padding: 20px;
-            background: linear-gradient(135deg, #f8fbff, #e6f0ff);
             min-height: 100vh;
+            text-align: center;
         }
 
         .header {
-            text-align: center;
-            padding: 80px 40px 40px;
             background: linear-gradient(135deg, var(--main-blue), var(--dark-blue));
             color: white;
+            padding: 60px 20px;
             border-radius: 15px;
             margin-bottom: 30px;
             position: relative;
             box-shadow: 0 8px 20px rgba(28, 115, 232, 0.2);
         }
 
-        .about-btn {
-            background: linear-gradient(135deg, #1a73e8, #0d47a1);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .about-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-        }
-
         .team-logo {
             position: absolute;
-            top: -30px;
+            top: -40px;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
-            height: 100px;
-            border: 3px solid white;
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
-            overflow: hidden;
-            transition: all 0.3s ease;
             background: white;
-            z-index: 100;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         .team-logo img {
             width: 100%;
             height: 100%;
             object-fit: contain;
+            border-radius: 50%;
             padding: 10px;
         }
 
-        .team-logo:hover {
-            transform: translateX(-50%) scale(1.05);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        .header h1 {
+            font-size: 2em;
+            margin: 10px 0;
         }
 
-        .header h1 {
-            font-size: 2.5em;
-            margin: 0.5em 0;
-            letter-spacing: -1px;
+        .about-btn {
+            background: var(--dark-blue);
+            color: white;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-btn:hover {
+            background: #073c92;
         }
 
         .subject-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            gap: 20px;
             max-width: 1200px;
-            margin: 0 auto;
+            margin: auto;
         }
 
         .subject-card {
             background: white;
-            padding: 25px;
-            border-radius: 15px;
+            padding: 20px;
+            border-radius: 12px;
             box-shadow: 0 5px 15px rgba(28, 115, 232, 0.1);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: 0.3s ease;
             border: 2px solid transparent;
-            position: relative;
         }
 
         .subject-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             border-color: var(--main-blue);
-            box-shadow: 0 12px 25px rgba(28, 115, 232, 0.15);
         }
 
         .badge {
-            position: absolute;
-            top: 15px;
-            left: 15px;
             background: var(--accent-color);
             color: var(--main-blue);
-            padding: 6px 15px;
+            padding: 5px 12px;
             border-radius: 20px;
-            font-size: 0.85em;
+            font-size: 0.9em;
             font-weight: bold;
         }
 
         .subject-card h3 {
             color: var(--dark-blue);
-            margin: 1em 0 0.5em;
+            margin: 15px 0;
             font-size: 1.4em;
         }
 
         .subject-card p {
             color: #666;
-            line-height: 1.6;
-            margin: 0 0 1.5em;
+            margin-bottom: 15px;
         }
 
         .download-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 30px;
-            background: linear-gradient(135deg, var(--main-blue), var(--dark-blue));
+            display: inline-block;
+            padding: 10px 25px;
+            background: var(--main-blue);
             color: white;
             text-decoration: none;
-            border-radius: 30px;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: 0.3s;
         }
 
         .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(28, 115, 232, 0.3);
+            background: var(--dark-blue);
         }
 
         .telegram-btn {
             position: fixed;
-            bottom: 30px;
-            left: 30px;
-            background: linear-gradient(135deg, #0088cc, #006699);
+            bottom: 20px;
+            left: 20px;
+            background: #0088cc;
             color: white;
-            padding: 15px 30px;
-            border-radius: 30px;
+            padding: 12px 25px;
+            border-radius: 25px;
             text-decoration: none;
-            display: inline-flex;
+            font-weight: bold;
+            display: flex;
             align-items: center;
-            gap: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            transition: all 0.3s ease;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
         }
 
         .telegram-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            background: #006699;
         }
 
         .logout-btn {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 20px;
+            right: 20px;
             background: #ff4444;
             color: white;
             padding: 12px 25px;
             border-radius: 25px;
-            cursor: pointer;
+            font-weight: bold;
             border: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
+            cursor: pointer;
+            transition: 0.3s;
         }
 
         .logout-btn:hover {
             background: #cc0000;
-            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 500px;
+            background: white;
+            padding: 20px;
+            margin: auto;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         @media (max-width: 768px) {
-            .header {
-                padding: 70px 20px 30px;
-            }
-
-            .team-logo {
-                width: 80px;
-                height: 80px;
-                top: -25px;
-            }
-
             .subject-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
             }
 
             .telegram-btn,
             .logout-btn {
-                bottom: 20px;
-                left: 20px;
-                right: 20px;
+                bottom: 15px;
                 width: calc(100% - 40px);
                 justify-content: center;
+                left: 20px;
+                right: 20px;
             }
-
-            /* تصميم عام */
-            body {
-                font-family: Arial, sans-serif;
-                background: #f4f4f4;
-                text-align: center;
-                direction: rtl;
-                margin: 0;
-                padding: 0;
-            }
-
-            .container {
-                max-width: 600px;
-                background: white;
-                padding: 20px;
-                margin: 50px auto;
-                border-radius: 12px;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            }
-
-            h2 {
-                color: #0d47a1;
-            }
-
-            .welcome-message {
-                font-size: 18px;
-                margin: 20px 0;
-            }
-
-            .logout-btn {
-                padding: 12px;
-                background: linear-gradient(135deg, #1a73e8, #0d47a1);
-                color: white;
-                font-weight: bold;
-                border: none;
-                border-radius: 8px;
-                cursor: pointer;
-                transition: all 0.3s ease;
-            }
-
-            .logout-btn:hover {
-                background-color: #0b3a99;
-            }
+        }
     </style>
 </head>
 
@@ -271,76 +206,53 @@
         <div class="team-logo">
             <img src="Aesthetic Minimalist Elegant Signature Logo.png" alt="Team Alex Logo">
         </div>
-        <h1>lectures</h1>
-        <p>PDF</p>
+        <h1>Lectures</h1>
+        <p>Download PDF files</p>
         <button class="about-btn" onclick="openAbout()">About Us</button>
     </header>
 
     <div class="subject-grid">
-        <!-- مادة 1 -->
         <div class="subject-card">
             <div class="badge">2024/2025</div>
-            <h3>Political science</h3>
-            <p>prepared by :Team Alex</p>
-            <a href="political-science.pdf" class="download-btn" download>
-                <span>lec</span>
-            </a>
+            <h3>Political Science</h3>
+            <p>Prepared by: Team Alex</p>
+            <a href="political-science.pdf" class="download-btn" download>Download</a>
         </div>
 
-        <!-- مادة 2 -->
         <div class="subject-card">
             <div class="badge">2024/2025</div>
             <h3>Marketing</h3>
-            <p>prepared by :Team Alex</p>
-            <a href="marketing.pdf" class="download-btn" download>
-                <span>lec</span>
-            </a>
+            <p>Prepared by: Team Alex</p>
+            <a href="marketing.pdf" class="download-btn" download>Download</a>
         </div>
 
-        <!-- مادة 3 -->
         <div class="subject-card">
             <div class="badge">2024/2025</div>
             <h3>AIS</h3>
-            <p>prepared by :Team Alex</p>
-            <a href="ais.pdf" class="download-btn" download>
-                <span>lec</span>
-            </a>
+            <p>Prepared by: Team Alex</p>
+            <a href="ais.pdf" class="download-btn" download>Download</a>
         </div>
-
-        <!-- إضافة مواد إضافية هنا -->
     </div>
 
-    <a href="https://t.me/teamalexgui" class="telegram-btn" target="_blank">
-        <span>💬</span>
-        <span>الشكاوى والمقترحات</span>
-    </a>
-    <div class="container">
-        <h2>hi in Team Alex</h2>
-        <p class="welcome-message" id="welcome-message"></p>
-        <button class="logout-btn" onclick="logout()">Sign out</button>
-    </div>
+    <a href="https://t.me/teamalexgui" class="telegram-btn">💬 Telegram</a>
+    <button class="logout-btn" onclick="logout()">Sign Out</button>
 
     <script>
-        // التحقق مما إذا كان المستخدم مسجل الدخول
         document.addEventListener("DOMContentLoaded", function () {
             let currentUser = localStorage.getItem("currentUser");
-
             if (!currentUser) {
-                alert("You must login first!");
-                window.location.href = "login.html"; // إعادة التوجيه إلى صفحة تسجيل الدخول
-            } else {
-                document.getElementById("welcome-message").innerText = `مرحبًا، ${currentUser}!`;
+                alert("You must log in first!");
+                window.location.href = "login.html";
             }
         });
 
-        // تسجيل الخروج
         function logout() {
-            localStorage.removeItem("teamAlexAuth");
             localStorage.removeItem("currentUser");
             window.location.href = "login.html";
         }
+
         function openAbout() {
-            window.location.href = "about.html"; // يمكنك تغيير الرابط حسب الحاجة
+            window.location.href = "about.html";
         }
     </script>
 </body>
