@@ -36,6 +36,24 @@
             box-shadow: 0 8px 20px rgba(28, 115, 232, 0.2);
         }
 
+        .about-btn {
+            background: linear-gradient(135deg, #1a73e8, #0d47a1);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
         .team-logo {
             position: absolute;
             top: -30px;
@@ -60,7 +78,7 @@
 
         .team-logo:hover {
             transform: translateX(-50%) scale(1.05);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         .header h1 {
@@ -202,66 +220,49 @@
                 width: calc(100% - 40px);
                 justify-content: center;
             }
-              /* تصميم عام */
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f4f4;
-            text-align: center;
-            direction: rtl;
-            margin: 0;
-            padding: 0;
-        }
 
-        .container {
-            max-width: 600px;
-            background: white;
-            padding: 20px;
-            margin: 50px auto;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
+            /* تصميم عام */
+            body {
+                font-family: Arial, sans-serif;
+                background: #f4f4f4;
+                text-align: center;
+                direction: rtl;
+                margin: 0;
+                padding: 0;
+            }
 
-        h2 {
-            color: #0d47a1;
-        }
+            .container {
+                max-width: 600px;
+                background: white;
+                padding: 20px;
+                margin: 50px auto;
+                border-radius: 12px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
 
-        .welcome-message {
-            font-size: 18px;
-            margin: 20px 0;
-        }
+            h2 {
+                color: #0d47a1;
+            }
 
-        .logout-btn {
-            padding: 12px;
-            background: linear-gradient(135deg, #1a73e8, #0d47a1);
-            color: white;
-            font-weight: bold;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
+            .welcome-message {
+                font-size: 18px;
+                margin: 20px 0;
+            }
 
-        .logout-btn:hover {
-            background-color: #0b3a99;
-        }
-       
-           .about-btn {
-        background: linear-gradient(135deg, #1a73e8, #0d47a1);
-        color: white;
-        border: none;
-        padding: 12px 25px;
-        font-size: 16px;
-        font-weight: bold;
-        border-radius: 25px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    }
+            .logout-btn {
+                padding: 12px;
+                background: linear-gradient(135deg, #1a73e8, #0d47a1);
+                color: white;
+                font-weight: bold;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
 
-    .about-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-    }
+            .logout-btn:hover {
+                background-color: #0b3a99;
+            }
     </style>
 </head>
 
@@ -313,7 +314,7 @@
         <span>💬</span>
         <span>الشكاوى والمقترحات</span>
     </a>
-<div class="container">
+    <div class="container">
         <h2>hi in Team Alex</h2>
         <p class="welcome-message" id="welcome-message"></p>
         <button class="logout-btn" onclick="logout()">Sign out</button>
@@ -338,9 +339,10 @@
             localStorage.removeItem("currentUser");
             window.location.href = "login.html";
         }
-          function openAbout() {
-        window.location.href = "about.html"; // يمكنك تغيير الرابط حسب الحاجة
-    }
+        function openAbout() {
+            window.location.href = "about.html"; // يمكنك تغيير الرابط حسب الحاجة
+        }
     </script>
 </body>
+
 </html>
