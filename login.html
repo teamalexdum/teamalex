@@ -1,103 +1,90 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Team Alex</title>
     <style>
-        /* تصميم صفحة تسجيل الدخول */
+        /* General Styles */
         body {
-            font-family: Arial, sans-serif;
-            background: #f4f4f4;
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(135deg, #1a73e8, #0d47a1);
             text-align: center;
             direction: rtl;
+            color: white;
         }
 
         .login-container {
             width: 100%;
             max-width: 400px;
-            background: white;
+            background: rgba(255, 255, 255, 0.1);
             padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             margin: 50px auto;
+            text-align: center;
         }
 
         .login-container h2 {
-            color: #0d47a1;
+            color: #fff;
             margin-bottom: 20px;
-        }
-
-        .login-container form {
-            display: flex;
-            flex-direction: column;
+            font-size: 24px;
         }
 
         .login-container label {
             text-align: right;
-            margin-bottom: 5px;
+            display: block;
             font-weight: bold;
+            margin-bottom: 5px;
+            color: #fff;
         }
 
         .login-container input {
-            padding: 10px;
+            width: 100%;
+            padding: 12px;
             margin-bottom: 15px;
-            border: 1px solid #ccc;
+            border: none;
             border-radius: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 16px;
+        }
+
+        .login-container input::placeholder {
+            color: #ddd;
         }
 
         .login-container button {
+            width: 100%;
             padding: 12px;
-            background: linear-gradient(135deg, #1a73e8, #0d47a1);
-            color: white;
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            color: black;
             font-weight: bold;
             border: none;
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
+            font-size: 16px;
         }
 
         .login-container button:hover {
-            background-color: #0b3a99;
+            background: linear-gradient(135deg, #ff8c00, #ffd700);
+            transform: scale(1.05);
         }
 
-        .login-container p {
-            margin-top: 15px;
+        .timer {
+            margin-top: 10px;
+            color: yellow;
+            font-size: 18px;
+            font-weight: bold;
+            display: none;
         }
 
-        .login-container a {
-            color: #1a73e8;
-            text-decoration: none;
-        }
-
-        .login-container a:hover {
-            text-decoration: underline;
-        }
-         .telegram-btn {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            background: linear-gradient(135deg, #0088cc, #006699);
-            color: white;
-            padding: 15px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .telegram-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-         .logo {
+        /* Logo */
+        .logo {
             width: 120px;
-            height: auto;
             margin-bottom: 15px;
             border-radius: 50%;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -106,73 +93,100 @@
 
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-8px); }
         }
     </style>
 </head>
 
 <body>
     <div class="login-container">
-         <img src="Aesthetic Minimalist Elegant Signature Logo.png" alt="شعار Team Alex" class="logo">
-        <h2>Login Team Alex</h2>
+        <img src="Aesthetic Minimalist Elegant Signature Logo.png" alt="Team Alex Logo" class="logo">
+        <h2>Welcome to Team Alex</h2>
         <form id="login-form">
-            <label for="username">:User name</label>
-            <input type="text" id="username" required>
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Enter your username" required>
 
-            <label for="password">:Password</label>
-            <input type="password" id="password" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter your password" required>
 
             <button type="submit">Login</button>
         </form>
-       
+        <p id="timer" class="timer"></p>
     </div>
-    <a href="https://t.me/teamalexgui" class="telegram-btn" target="_blank">
-        <span>💬</span>
-        <span>الشكاوى والمقترحات</span>
-    </a>
+
     <script>
-        // بيانات المستخدمين المسجلين مسبقًا
-        const users = [
-            { username: "admin", password: "you/1234/ty" },
-            { username: "youss/a", password: "12345" },
-            { username: "kamal", password: "12345" }
-                                           
-        ];
+           const users = [
+        { username: "admin", password: "you/1234/ty" },
+        { username: "youss/a", password: "12345" },
+        { username: "kamal", password: "12345" }
+    ];
 
-        // التحقق من تسجيل الدخول
-        document.getElementById("login-form").addEventListener("submit", function (event) {
-            event.preventDefault(); // منع إعادة تحميل الصفحة
+    let logoutTimer;
 
-            let username = document.getElementById("username").value.trim();
-            let password = document.getElementById("password").value.trim();
+    document.getElementById("login-form").addEventListener("submit", function (event) {
+        event.preventDefault();
 
-            let user = users.find(u => u.username === username && u.password === password);
+        let username = document.getElementById("username").value.trim();
+        let password = document.getElementById("password").value.trim();
 
-            if (user) {
-                localStorage.setItem("teamAlexAuth", "true");
-                localStorage.setItem("currentUser", username);
-                alert("You have successfully logged in!");
-                window.location.href = "index.html"; // إعادة التوجيه للصفحة الرئيسية
-            } else {
-                alert("Incorrect username or password.");
+        let user = users.find(u => u.username === username && u.password === password);
+
+        if (user) {
+            // Check if the user is already logged in on another device
+            if (localStorage.getItem(`loggedIn_${username}`) === "true") {
+                alert("This account is already logged in on another device.");
+                return;
             }
-        });
 
-        // التحقق من حالة المستخدم عند تحميل الموقع
-        document.addEventListener("DOMContentLoaded", function () {
-            if (localStorage.getItem("teamAlexAuth") === "true") {
-                let currentUser = localStorage.getItem("currentUser");
-                document.body.innerHTML = `<h2>Welcome، ${currentUser}!</h2>
-                                           <button onclick="logout()">تسجيل الخروج</button>`;
-            }
-        });
+            // Store login session
+            localStorage.setItem("teamAlexAuth", "true");
+            localStorage.setItem("currentUser", username);
+            localStorage.setItem(`loggedIn_${username}`, "true"); // Prevent multi-login
+            sessionStorage.setItem("activeSession", "true"); // Prevent multiple tabs
 
-        // تسجيل الخروج
-        function logout() {
-            localStorage.removeItem("teamAlexAuth");
-            localStorage.removeItem("currentUser");
-            window.location.href = "login.html";
+            alert("You have successfully logged in!");
+            document.body.innerHTML = `<h2>Welcome, ${username}!</h2>
+                                       <p id="timer" class="timer"></p>
+                                       <button onclick="logout()">Logout</button>`;
+
+            startLogoutTimer();
+        } else {
+            alert("Incorrect username or password.");
         }
+    });
+
+    function startLogoutTimer() {
+        let timeLeft = 120; // 2 minutes
+        document.getElementById("timer").style.display = "block";
+
+        logoutTimer = setInterval(() => {
+            timeLeft--;
+            document.getElementById("timer").innerText = `Session expires in: ${timeLeft} seconds`;
+
+            if (timeLeft <= 0) {
+                logout();
+            }
+        }, 1000);
+    }
+
+    function logout() {
+        alert("Session expired. Logging out.");
+        clearInterval(logoutTimer);
+        let username = localStorage.getItem("currentUser");
+
+        localStorage.removeItem("teamAlexAuth");
+        localStorage.removeItem("currentUser");
+        localStorage.removeItem(`loggedIn_${username}`);
+        sessionStorage.removeItem("activeSession");
+
+        window.location.href = "login.html";
+    }
+
+    // Prevent duplicate login in same browser tab
+    if (sessionStorage.getItem("activeSession")) {
+        alert("You are already logged in on this browser.");
+        window.location.href = "login.html";
+    }
     </script>
 </body>
 
