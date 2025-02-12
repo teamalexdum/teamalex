@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team Alex - ملخصات دراسية</title>
+    <title>Team Alex - PDF</title>
     <style>
         /* أنماط مخصصة متطورة */
         :root {
@@ -253,38 +253,38 @@
         <div class="team-logo">
             <img src="Aesthetic Minimalist Elegant Signature Logo.png" alt="Team Alex Logo">
         </div>
-        <h1>المحاضرات الدراسية</h1>
-        <p>ملخصات معتمدة بصيغة PDF</p>
+        <h1>lectureس</h1>
+        <p>PDF</p>
     </header>
 
     <div class="subject-grid">
         <!-- مادة 1 -->
         <div class="subject-card">
             <div class="badge">2024/2026</div>
-            <h3>العلوم السياسية</h3>
-            <p>إعداد: فريق Team Alex</p>
+            <h3>Political science</h3>
+            <p>prepared by :Team Alex</p>
             <a href="political-science.pdf" class="download-btn" download>
-                <span>📚 تنزيل المحاضرة</span>
+                <span>lec</span>
             </a>
         </div>
 
         <!-- مادة 2 -->
         <div class="subject-card">
             <div class="badge">2024/2026</div>
-            <h3>التسويق</h3>
-            <p>إعداد: فريق Team Alex</p>
+            <h3>Marketing</h3>
+            <p>prepared by :Team Alex</p>
             <a href="marketing.pdf" class="download-btn" download>
-                <span>📚 تنزيل المحاضرة</span>
+                <span>lec</span>
             </a>
         </div>
 
         <!-- مادة 3 -->
         <div class="subject-card">
             <div class="badge">2024/2026</div>
-            <h3>نظم المعلومات المحاسبية</h3>
-            <p>إعداد: فريق Team Alex</p>
+            <h3>AIS</h3>
+            <p>prepared by :Team Alex</p>
             <a href="ais.pdf" class="download-btn" download>
-                <span>📚 تنزيل المحاضرة</span>
+                <span>lec</span>
             </a>
         </div>
 
@@ -296,7 +296,7 @@
         <span>الشكاوى والمقترحات</span>
     </a>
 <div class="container">
-        <h2>مرحبًا بك في Team Alex</h2>
+        <h2>(HI) in Team Alex</h2>
         <p class="welcome-message" id="welcome-message"></p>
         <button class="logout-btn" onclick="logout()">تسجيل الخروج</button>
     </div>
@@ -307,7 +307,7 @@
             let currentUser = localStorage.getItem("currentUser");
 
             if (!currentUser) {
-                alert("يجب عليك تسجيل الدخول أولاً!");
+                alert("You must login first!");
                 window.location.href = "login.html"; // إعادة التوجيه إلى صفحة تسجيل الدخول
             } else {
                 document.getElementById("welcome-message").innerText = `مرحبًا، ${currentUser}!`;
