@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - Team Alex</title>
+    <style>
+        /* تصميم صفحة تسجيل الدخول */
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            text-align: center;
+            direction: rtl;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin: 50px auto;
+        }
+
+        .login-container h2 {
+            color: #0d47a1;
+            margin-bottom: 20px;
+        }
+
+        .login-container form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .login-container label {
+            text-align: right;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .login-container input {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        .login-container button {
+            padding: 12px;
+            background: linear-gradient(135deg, #1a73e8, #0d47a1);
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .login-container button:hover {
+            background-color: #0b3a99;
+        }
+
+        .login-container p {
+            margin-top: 15px;
+        }
+
+        .login-container a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+
+        .login-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <h2>تسجيل الدخول إلى Team Alex</h2>
+        <form id="login-form">
+            <label for="username">اسم المستخدم:</label>
+            <input type="text" id="username" required>
+
+            <label for="password">كلمة المرور:</label>
+            <input type="password" id="password" required>
+
+            <button type="submit">تسجيل الدخول</button>
+        </form>
+        <p>ليس لديك حساب؟ <a href="#" id="register-link">إنشاء حساب جديد</a></p>
+    </div>
+
+    <script>
+        // بيانات المستخدمين المسجلين مسبقًا
+        const users = [
+            { username: "admin", password: "1234" },
+            { username: "user1", password: "pass1" }
+        ];
+
+        // التحقق من تسجيل الدخول
+        document.getElementById("login-form").addEventListener("submit", function (event) {
+            event.preventDefault(); // منع إعادة تحميل الصفحة
+
+            let username = document.getElementById("username").value.trim();
+            let password = document.getElementById("password").value.trim();
+
+            let user = users.find(u => u.username === username && u.password === password);
+
+            if (user) {
+                localStorage.setItem("teamAlexAuth", "true");
+                localStorage.setItem("currentUser", username);
+                alert("تم تسجيل الدخول بنجاح!");
+                window.location.href = "index.html"; // إعادة التوجيه للصفحة الرئيسية
+            } else {
+                alert("اسم المستخدم أو كلمة المرور غير صحيحة.");
+            }
+        });
+
+        // التحقق من حالة المستخدم عند تحميل الموقع
+        document.addEventListener("DOMContentLoaded", function () {
+            if (localStorage.getItem("teamAlexAuth") === "true") {
+                let currentUser = localStorage.getItem("currentUser");
+                document.body.innerHTML = `<h2>مرحبًا، ${currentUser}!</h2>
+                                           <button onclick="logout()">تسجيل الخروج</button>`;
+            }
+        });
+
+        // تسجيل الخروج
+        function logout() {
+            localStorage.removeItem("teamAlexAuth");
+            localStorage.removeItem("currentUser");
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+
+</html>
