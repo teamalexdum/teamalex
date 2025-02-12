@@ -202,6 +202,48 @@
                 width: calc(100% - 40px);
                 justify-content: center;
             }
+              /* تصميم عام */
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            text-align: center;
+            direction: rtl;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            background: white;
+            padding: 20px;
+            margin: 50px auto;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #0d47a1;
+        }
+
+        .welcome-message {
+            font-size: 18px;
+            margin: 20px 0;
+        }
+
+        .logout-btn {
+            padding: 12px;
+            background: linear-gradient(135deg, #1a73e8, #0d47a1);
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: #0b3a99;
+        }
         }
     </style>
 </head>
@@ -253,6 +295,31 @@
         <span>💬</span>
         <span>الشكاوى والمقترحات</span>
     </a>
+<div class="container">
+        <h2>مرحبًا بك في Team Alex</h2>
+        <p class="welcome-message" id="welcome-message"></p>
+        <button class="logout-btn" onclick="logout()">تسجيل الخروج</button>
+    </div>
 
+    <script>
+        // التحقق مما إذا كان المستخدم مسجل الدخول
+        document.addEventListener("DOMContentLoaded", function () {
+            let currentUser = localStorage.getItem("currentUser");
+
+            if (!currentUser) {
+                alert("يجب عليك تسجيل الدخول أولاً!");
+                window.location.href = "login.html"; // إعادة التوجيه إلى صفحة تسجيل الدخول
+            } else {
+                document.getElementById("welcome-message").innerText = `مرحبًا، ${currentUser}!`;
+            }
+        });
+
+        // تسجيل الخروج
+        function logout() {
+            localStorage.removeItem("teamAlexAuth");
+            localStorage.removeItem("currentUser");
+            window.location.href = "login.html";
+        }
+    </script>
 </body>
 </html>
