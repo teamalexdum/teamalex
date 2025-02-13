@@ -212,28 +212,7 @@
     <a href="https://t.me/teamalexgui" class="telegram-btn" target="_blank">
         💬 Telegram Support
     </a>
-    <button class="logout-btn" onclick="logout()">Sign Out</button>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let currentUser = localStorage.getItem("currentUser");
-
-            if (!currentUser) {
-                alert("You must login first!");
-                window.location.href = "login.html";
-            }
-        });
-
-        function logout() {
-            localStorage.removeItem("teamAlexAuth");
-            localStorage.removeItem("currentUser");
-            window.location.href = "login.html";
-        }
-
-        function openAbout() {
-            window.location.href = "about.html";
-        }
-    </script>
+   
 </body>
 
 </html>
